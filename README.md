@@ -1,0 +1,1 @@
+A Library web app using JavaScript. Completed for The Odin Project: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library
