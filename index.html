@@ -7,20 +7,60 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="contents">
+
+            <!-- Title and library statistics display -->
             <div class="upper_display">
                 <h1 id="title"> My Reading Library </h1>
 
                 <!--  Stats info on upper right screen -->
                 <div class="stats">
                     <p id="test"> </p>
-
                     <p id="total_read"> </p>
                 </div>
+            </div>
+
+            <!-- Menu / buttons information -->
+            <div class="button_menu">
+                <!-- Drop down organization menu -->
+                <div class="dropdown-btn">
+                    <label for="cars"> Organize Library By: </label>
+                    <select name="cars" id="cars">
+                        <option value="date_added"> Date Added </option>
+                        <option value="publish_date"> Date Published </option>
+                        <option value="shortest"> Shortest Length </option>
+                        <option value="shortest"> Longest Length </option>
+                        <option value="alphabetic_title"> By Title </option>
+                    </select>
+
+                </div>
+
+                <!-- Add / delete from library buttons -->
+                <div class="edit_buttons">
+                    <button type="button" id="add_btn"> Add a Book </button>
+                    <button type="button" id="delete_btn"> Delete a Book </button>
+                </div>
+
+                <!-- Add book popup form -->
+                <div class="form-popup" id="newBook">
+                    <form action="#" class="form-container">
+                        <h1> LOGIN </h1>
+                        <label  for="email"><b>Email</b></label>
+                        <input type="text" placeholder="Enter email" name="email">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Library content cards -->
+            <div class="library_contents" id="library_contents">
+
             </div>
         </div>
 
         <script src="script.js"></script>
     </body>
-
+    <!-- <footer>
+        <p> Project completed for <a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library"> The Odin Project </a></p>
+        <p> Copyright <script>document.write(new Date().getFullYear())</script> - Brenton Andrews - <a href="https://github.com/brenton-j-andrews/Library"> GitHub </a></p>
+    </footer> -->
 </html>

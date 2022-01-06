@@ -1,10 +1,21 @@
+body {
+    margin: 25px;
+    background-color: lightgrey;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* UPPER DISPLAY STYLING */
 .upper_display {
     display: flex;
     justify-content: space-between;
-    background-color: aqua;
+    background-color: grey;
     padding-left: 25px;
     padding-right: 25px;
-    margin: 25px;
 }
 
 .stats {
@@ -12,4 +23,76 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 0px;
+}
+
+/* BUTTON MENU STYLING */
+.button_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightgrey;
+}
+
+.button_menu button {
+    justify-content: right;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+}
+
+#add_btn {
+    background-color: #4CAF50;
+}
+
+#add_btn:hover {
+    background-color: darkgreen;
+}
+
+#delete_btn {
+    background-color: red;
+}
+
+#delete_btn:hover {
+    background-color: darkred;
+}
+
+/* ADD BOOK POP-UP FORM STYLING */
+.form-popup {
+    display: none;
+}
+
+/* LIBRARY CONTENTS STYLING */
+.library_contents {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1030px;
+    justify-content: left;
+    gap: 25px;
+    margin-right: auto;
+}
+
+.card {
+    background-color: yellow;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    width: 225px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #669fb2;
+    color: white;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
