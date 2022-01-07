@@ -97,6 +97,12 @@ body {
     font-size: 16px;
 }
 
+/* Delete card hover styling */
+.card:hover.delete {
+    background-color:#E4D00A;
+}
+
+
 /* Footer styling */
 footer {
     background-color: #669fb2;

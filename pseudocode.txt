@@ -1,0 +1,35 @@
+Delete button desired result:
+Once delete button is pressed, "delete mode" is activated. 
+"delete mode" remains active until another mouse click occurs not on a HTML card element, or an element is deleted.
+While delete mode is active, hovering over any book card elements will change their color. 
+Clicking on a card ask the user if they want to delete the card, Yes / No.
+
+Pseudocode upon clicking "delete" button:
+
+activate event listener {
+    let cards = all child nodes of library_contents
+    for each card, add class name "delete" -> Change card color if mouse hovering.
+    let delete_mode = true;
+
+    while (delete_mode) {
+        listen for mouse click event.
+        if (mouse clicks over card element) {
+            prompt delete confirmation {
+                if yes {
+                    delete html element
+                    remove associated book object from myLibrary somehow...
+                    call fillLibrary() to update card display / stats.
+                }
+            }
+
+            delete_mode = false
+        } 
+        
+        else (mouse click occured anywhere else!) {
+            delete_mode = false; -> terminate loop.
+        }
+    }
+
+    remove "delete" class from all card elements;
+    return(?);
+}

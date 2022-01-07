@@ -8,7 +8,6 @@ let new_book_container = document.getElementById("form-container")
 let submit_form_btn = document.getElementById("submit-form");
 let clear_form_btn = document.getElementById("clear-form")
 let close_form_btn = document.getElementById("close-form");
-
 let myLibrary = [];
 
 
@@ -24,22 +23,10 @@ function book(title, author, pages, publish_date) {
     }
 }
 
+
 // Add event listeners to all buttons.
 add_book_btn.addEventListener("click", () => {
     new_book_form.style.display = "block";
-});
-
-// Add new book to library with form submit button.
-new_book_container.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const formProps = Object.fromEntries(formData);
-    let new_book = new book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-pub-date']);
-    addBookToLibrary(new_book);
-    new_book_container.reset();
-    new_book_form.style.display = "none";
-    console.log(myLibrary);
-    fillLibrary(myLibrary);
 });
 
 clear_form_btn.addEventListener("click", () => {
@@ -50,6 +37,29 @@ close_form_btn.addEventListener("click", () => {
     new_book_form.style.display = "none";
 });
 
+delete_book_btn.addEventListener("click", () => {
+    let cards = library_contents.childNodes;
+    for (let i = 0; i < cards.length; i++) {
+        let child = cards[i];
+        child.classList.add("delete");
+        console.log(child.className);
+    }
+    console.log(cards.length);
+});
+
+
+// Add new book to library with form submit button.
+new_book_container.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    let new_book = new book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-pub-date']);
+    addBookToLibrary(new_book);
+    new_book_container.reset();
+    new_book_form.style.display = "none";
+    fillLibrary(myLibrary);
+});
+
 
 // Add book object to myLibrary array.
 function addBookToLibrary(bookObject) {
@@ -57,7 +67,7 @@ function addBookToLibrary(bookObject) {
 }
 
 
-// Use myLibrary info to fill webpage with library content.
+// Use myLibrary info to fill webpage with library content cards.
 function fillLibrary(myLibrary) {
     library_contents.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++) {
@@ -80,16 +90,21 @@ function fillLibrary(myLibrary) {
         // Append new elements to the card.
         card.append(title, author, pages, publish_date);
         library_contents.appendChild(card);
+
+        // Update library stats.
+        statUpdate();
     }
 }
 
 
-// Add books to library for testing / visualization -> delete later!
-const theHobbit = new book("The Hobbit", "J.R.R Tolkien", 295, "11/12/1930");
-const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01/25/1999");
-addBookToLibrary(theHobbit);
-addBookToLibrary(harryPotter2);
+// Update stats on upper right page.
+function statUpdate() {
+    total_books.textContent = `Books in Library: ${myLibrary.length}`;
+    total_read.textContent = `Books read: 0`;
+}
 
-// Update data on upper display.
-total_books.textContent = `Books in Library: ${myLibrary.length}`;
-total_read.textContent = `Books read: 0`;
+
+// Add books to library for testing / visualization -> delete later!
+const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01-25-1999");
+addBookToLibrary(harryPotter2);
+fillLibrary(myLibrary);
