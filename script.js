@@ -3,11 +3,16 @@ let total_read = document.getElementById("total_read");
 let library_contents = document.getElementById("library_contents");
 let add_book_btn = document.getElementById("add_btn");
 let delete_book_btn = document.getElementById("delete_btn");
+let new_book_form = document.getElementById("newBook");
+let new_book_container = document.getElementById("form-container")
+let submit_form_btn = document.getElementById("submit-form");
+let clear_form_btn = document.getElementById("clear-form")
+let close_form_btn = document.getElementById("close-form");
 
 let myLibrary = [];
 
 
-// Book constructor!
+// Book object constructor!
 function book(title, author, pages, publish_date) {
     this.title = title;
     this.author = author;
@@ -19,16 +24,42 @@ function book(title, author, pages, publish_date) {
     }
 }
 
-// add_book_btn functionality.
-add_book_btn.addEventListener("click", () => console.log("click!"));
+// Add event listeners to all buttons.
+add_book_btn.addEventListener("click", () => {
+    new_book_form.style.display = "block";
+});
+
+// Add new book to library with form submit button.
+new_book_container.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    let new_book = new book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-pub-date']);
+    addBookToLibrary(new_book);
+    new_book_container.reset();
+    new_book_form.style.display = "none";
+    console.log(myLibrary);
+    fillLibrary(myLibrary);
+});
+
+clear_form_btn.addEventListener("click", () => {
+    new_book_container.reset();
+});
+
+close_form_btn.addEventListener("click", () => {
+    new_book_form.style.display = "none";
+});
+
 
 // Add book object to myLibrary array.
 function addBookToLibrary(bookObject) {
     myLibrary.push(bookObject);
 }
 
+
 // Use myLibrary info to fill webpage with library content.
 function fillLibrary(myLibrary) {
+    library_contents.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++) {
         // Create the display card.
         const card = document.createElement("div");
@@ -52,13 +83,13 @@ function fillLibrary(myLibrary) {
     }
 }
 
+
 // Add books to library for testing / visualization -> delete later!
 const theHobbit = new book("The Hobbit", "J.R.R Tolkien", 295, "11/12/1930");
 const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01/25/1999");
 addBookToLibrary(theHobbit);
 addBookToLibrary(harryPotter2);
 
-
-fillLibrary(myLibrary);
+// Update data on upper display.
 total_books.textContent = `Books in Library: ${myLibrary.length}`;
 total_read.textContent = `Books read: 0`;

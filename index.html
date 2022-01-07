@@ -43,10 +43,27 @@
 
                 <!-- Add book popup form -->
                 <div class="form-popup" id="newBook">
-                    <form action="#" class="form-container">
-                        <h1> LOGIN </h1>
-                        <label  for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter email" name="email">
+                    <form action="#" method="post" class="form-container" id="form-container">
+
+                        <!-- Form contents -->
+                        <h1> Add new book </h1>
+
+                        <label for="title"><b>Title: </b></label>
+                        <input type="text" placeholder="Enter title" name="book-title">
+                        <br>
+                        <label for="author"><b>Author: </b></label>
+                        <input type="text" placeholder="Enter author" name="book-author">
+                        <br>
+                        <label for="page_count"><b>Pages: </b></label>
+                        <input type="text" placeholder="Enter page count" name="book-pages">
+                        <br>
+                        <label for="pub_date"><b>Publication date: </b></label>
+                        <input type="text" placeholder="Enter publication date" name="book-pub-date">
+
+                        <!-- Form submit / clear / close buttons -->
+                        <button type="submit" class="submit-new-btn" id="submit-form"> Submit </button>
+                        <button type="button" class="clear-form-btn" id="clear-form"> Clear </button>
+                        <button type="button" class="close-form-btn" id="close-form"> Close </button>
                     </form>
                 </div>
             </div>

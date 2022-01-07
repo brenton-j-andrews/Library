@@ -64,7 +64,19 @@ body {
 /* ADD BOOK POP-UP FORM STYLING */
 .form-popup {
     display: none;
+    position: fixed;
+    top: 12%;
+    right: 25px;
+    border: 3px solid darkgrey;
+    z-index: 9;
 }
+
+.form-container {
+    max-width: 500px;
+    padding: 10px;
+    gap: 5px;
+    background-color: white;
+  }
 
 /* LIBRARY CONTENTS STYLING */
 .library_contents {
