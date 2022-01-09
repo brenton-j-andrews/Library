@@ -97,6 +97,12 @@ body {
     font-size: 16px;
 }
 
+/* Expanded (hover) card styling */
+.card:hover {
+    background-color: red;
+}
+
+
 /* Delete card hover styling */
 .card:hover.delete {
     background-color:#E4D00A;

@@ -1,6 +1,5 @@
 let total_books = document.getElementById("test");
 let total_read = document.getElementById("total_read");
-let library_contents = document.getElementById("library_contents");
 let add_book_btn = document.getElementById("add_btn");
 let delete_book_btn = document.getElementById("delete_btn");
 let new_book_form = document.getElementById("newBook");
@@ -8,15 +7,22 @@ let new_book_container = document.getElementById("form-container")
 let submit_form_btn = document.getElementById("submit-form");
 let clear_form_btn = document.getElementById("clear-form")
 let close_form_btn = document.getElementById("close-form");
+
+
+// Library content variables.
+let library_contents = document.getElementById("library_contents");
+let cards = library_contents.childNodes;
 let myLibrary = [];
+let delete_mode = false;
 
 
 // Book object constructor!
-function book(title, author, pages, publish_date) {
+function book(title, author, pages, publish_date, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.publish_date = publish_date;
+    this.index = index;
 
    this.info = function() {
         return `${title} by ${author}, ${pages} pages`;
@@ -29,31 +35,52 @@ add_book_btn.addEventListener("click", () => {
     new_book_form.style.display = "block";
 });
 
+
 clear_form_btn.addEventListener("click", () => {
     new_book_container.reset();
 });
+
 
 close_form_btn.addEventListener("click", () => {
     new_book_form.style.display = "none";
 });
 
+
+// Toggle "delete_mode", which allows you to delete book cards.
 delete_book_btn.addEventListener("click", () => {
-    let cards = library_contents.childNodes;
-    for (let i = 0; i < cards.length; i++) {
-        let child = cards[i];
-        child.classList.add("delete");
-        console.log(child.className);
+
+    // if false -> activate delete mode, add "click" eventlistener to each card object to remove corresponding book object from myLibrary.
+    if (!delete_mode) {
+        delete_mode = true;
+        delete_book_btn.textContent = "Click when done";
+        cards.forEach(card => {
+            card.classList.add("delete");
+            card.addEventListener("click", deleteBtnlListener);  
+        })
+    } 
+    else {
+        delete_mode = false;
+        delete_book_btn.textContent = "Delete a book";
+        cards.forEach(card => {
+            card.classList.remove("delete");
+        })
     }
-    console.log(cards.length);
 });
 
+// delete_book_btn eventListener function.
+function deleteBtnlListener(card) {
+    myLibrary.splice(Number(card.id), 1);
+    fillLibrary(myLibrary);
+    delete_book_btn.textContent = "Delete a book"
+    delete_mode = false;
+}
 
 // Add new book to library with form submit button.
 new_book_container.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
-    let new_book = new book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-pub-date']);
+    let new_book = new book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-pub-date'], myLibrary.length - 1);
     addBookToLibrary(new_book);
     new_book_container.reset();
     new_book_form.style.display = "none";
@@ -80,6 +107,7 @@ function fillLibrary(myLibrary) {
         const author = document.createElement("p");
         const pages = document.createElement("p");
         const publish_date = document.createElement("p");
+        card.id = i;
 
         // Add Text Content to each text element.
         title.textContent = "Title: " + myLibrary[i].title;
@@ -104,7 +132,11 @@ function statUpdate() {
 }
 
 
-// Add books to library for testing / visualization -> delete later!
-const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01-25-1999");
+// Add books to library for testing / visualization -> delete later maybe!
+const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01-25-1999", 0);
+const theHobbit = new book("The Hobbit", "J.R.R Tolkien", 295, "09-21-1937", 1);
+const algorithmsForth = new book("Algorithms, Forth Ed", "Sedgewick", 610, "10-10-2011", 2);
 addBookToLibrary(harryPotter2);
+addBookToLibrary(theHobbit);
+addBookToLibrary(algorithmsForth);
 fillLibrary(myLibrary);

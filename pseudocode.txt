@@ -33,3 +33,22 @@ activate event listener {
     remove "delete" class from all card elements;
     return(?);
 }
+
+
+DELETE BUTTON ISSUE TO SOLVE LATER... -> When the "Delete a book" button is pressed, I am only able to delete one book and behavoir reverts back to normal. Adding a while loop
+crashes the program (and my OS as it turns out). 
+
+Desired program behavior: 
+1. Press "Delete a Book" button. Text changes to "Click when done"
+2. delete_mode = true.
+3. While delete_mode = true, all cards change color when hovered over.
+4. If a hovered card is clicked, associated book object removed from myLibrary and fillLibrary() updates display with new library.
+5. (The issue) Should be able to repeat step 4 until the library is empty / you are done.
+6. Click "Click when done" to exit delete mode.
+
+
+
+Next goal: Create a "Read" (Yes / No) toggle button that changes the color of the book card if the book has been read. This button will be hidden in an extended card
+that is accessed if the mouse hovers. Other info in the extended card (stored in the book object) will be user rating (if read) and a notepad for notes!
+
+Step 1: Create hover function that expands card. 
