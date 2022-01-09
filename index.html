@@ -35,6 +35,17 @@
 
                 </div>
 
+                <div class="read_unread">
+                    <h4 id="read"> Read </h4>
+                    <div class="read">
+
+                    </div>   
+                    <h4 id="unread"> Not Read </h4>
+                    <div class="unread">
+
+                    </div>
+                </div>
+
                 <!-- Add / delete from library buttons -->
                 <div class="edit_buttons">
                     <button type="button" id="add_btn"> Add a Book </button>
@@ -44,26 +55,30 @@
                 <!-- Add book popup form -->
                 <div class="form-popup" id="newBook">
                     <form action="#" method="post" class="form-container" id="form-container">
+                        <fieldset>
+                            <legend> New Book </legend>
 
-                        <!-- Form contents -->
-                        <h1> Add new book </h1>
+                            <!-- Form contents -->
+                            <label for="title"><b> Title: </b></label>
+                            <input type="text" placeholder="Enter title" name="book-title" required>
+                            
 
-                        <label for="title"><b>Title: </b></label>
-                        <input type="text" placeholder="Enter title" name="book-title">
-                        <br>
-                        <label for="author"><b>Author: </b></label>
-                        <input type="text" placeholder="Enter author" name="book-author">
-                        <br>
-                        <label for="page_count"><b>Pages: </b></label>
-                        <input type="text" placeholder="Enter page count" name="book-pages">
-                        <br>
-                        <label for="pub_date"><b>Publication date: </b></label>
-                        <input type="date" placeholder="Enter publication date" name="book-pub-date">
-                        <br><br>
-                        <!-- Form submit / clear / close buttons -->
-                        <button type="submit" class="submit-new-btn" id="submit-form"> Submit </button>
-                        <button type="button" class="clear-form-btn" id="clear-form"> Clear </button>
-                        <button type="button" class="close-form-btn" id="close-form"> Close </button>
+                            <label for="author"><b>Author: </b></label>
+                            <input type="text" placeholder="Enter author" name="book-author" required>
+                            
+
+                            <label for="page_count"><b>Pages: </b></label>
+                            <input type="text" placeholder="Enter page count" name="book-pages" required>
+                            
+
+                            <label for="pub_date"><b>Publication date: </b></label>
+                            <input type="date" placeholder="Enter publication date" name="book-pub-date" required>
+                            <br>
+                            <!-- Form submit / clear / close buttons -->
+                            <button type="submit" class="submit-new-btn" id="submit-form"> Submit </button>
+                            <button type="button" class="clear-form-btn" id="clear-form"> Clear </button>
+                            <button type="button" class="close-form-btn" id="close-form"> Close </button>
+                        </fieldset>
                     </form>
                 </div>
             </div>

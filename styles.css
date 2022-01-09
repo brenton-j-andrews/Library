@@ -45,6 +45,28 @@ body {
     font-size: 16px;
 }
 
+/* Read / unread styling */
+.read_unread {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.read, .unread {
+    border-radius: 12px;
+    border: black solid 1px;
+    height: 50px;
+    width: 50px;
+}
+
+.read {
+    background-color: yellow;
+}
+
+.unread {
+    background-color: #89CFF0;
+}
+
 #add_btn {
     background-color: #4CAF50;
 }
@@ -67,16 +89,57 @@ body {
     position: fixed;
     top: 12%;
     right: 25px;
-    border: 3px solid darkgrey;
     z-index: 9;
 }
 
 .form-container {
     max-width: 500px;
+    border-radius: 12px;
+    border: 1px solid black;
     padding: 10px;
     gap: 5px;
     background-color: white;
   }
+
+  fieldset {
+      margin: 10px;
+      padding: 25px;
+      gap: 25px;
+  }
+  label {
+      display: block;
+      margin-top: 10px;
+  }
+  
+  .form-container button {
+      display: inline;
+      width: 100px;
+      margin-top: 25px;
+  }
+
+
+#submit-form {
+      background-color: #4CAF50;
+}
+#submit-form:hover {
+    background-color: darkgreen;
+}
+
+#clear-form {
+    background-color: #89CFF0;
+}
+
+#clear-form:hover {
+    background-color: blue;
+}
+
+#close-form {
+    background-color: red;
+}
+
+#close-form:hover {
+    background-color: darkred;
+}
 
 /* LIBRARY CONTENTS STYLING */
 .library_contents {
@@ -87,7 +150,6 @@ body {
     gap: 25px;
     margin-right: auto;
 }
-
 
 /* Card styling */
 .card {

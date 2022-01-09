@@ -16,18 +16,17 @@ let myLibrary = [];
 let delete_mode = false;
 
 
-// Book object constructor!
+// Book object constructor and prototype functions.
 function book(title, author, pages, publish_date, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.publish_date = publish_date;
     this.index = index;
-    this.date_added = new Date().to
+}
 
-   this.info = function() {
-        return `${title} by ${author}, ${pages} pages`;
-    }
+book.prototype.info = function() {
+    return `${title} by ${author}, ${pages} pages`;
 }
 
 
@@ -105,6 +104,9 @@ function fillLibrary(myLibrary) {
         const publish_date = document.createElement("p");
         card.id = i;
 
+        // Create "hidden-information" -> Read / not read, book rating, book notes. Accessed by clicking on the card.
+        const book_notes = document.createElement("textarea");
+
         // Add Text Content to each text element.
         title.textContent = "Title: " + myLibrary[i].title;
         author.textContent = "Author: " + myLibrary[i].author;
@@ -114,8 +116,9 @@ function fillLibrary(myLibrary) {
         // Append new elements to card_content div.
         card.append(title, author, pages, publish_date);
         library_contents.appendChild(card);
+
     }
-    
+
     // Update library stats.
     statUpdate();
 }
