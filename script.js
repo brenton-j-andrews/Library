@@ -23,6 +23,7 @@ function book(title, author, pages, publish_date, index) {
     this.pages = pages;
     this.publish_date = publish_date;
     this.index = index;
+    this.date_added = new Date().to
 
    this.info = function() {
         return `${title} by ${author}, ${pages} pages`;
@@ -55,25 +56,19 @@ delete_book_btn.addEventListener("click", () => {
         delete_book_btn.textContent = "Click when done";
         cards.forEach(card => {
             card.classList.add("delete");
-            card.addEventListener("click", deleteBtnlListener);  
+            card.addEventListener("click", deleteBtnlListener, false);
+
+            function deleteBtnlListener(e) {
+                myLibrary.splice(Number(card.id), 1);
+                console.log(myLibrary.length);
+                delete_book_btn.textContent = "Delete a book";
+                fillLibrary(myLibrary);
+                delete_mode = false;
+            }
         })
     } 
-    else {
-        delete_mode = false;
-        delete_book_btn.textContent = "Delete a book";
-        cards.forEach(card => {
-            card.classList.remove("delete");
-        })
-    }
 });
 
-// delete_book_btn eventListener function.
-function deleteBtnlListener(card) {
-    myLibrary.splice(Number(card.id), 1);
-    fillLibrary(myLibrary);
-    delete_book_btn.textContent = "Delete a book"
-    delete_mode = false;
-}
 
 // Add new book to library with form submit button.
 new_book_container.addEventListener("submit", (event) => {
@@ -98,6 +93,7 @@ function addBookToLibrary(bookObject) {
 function fillLibrary(myLibrary) {
     library_contents.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++) {
+
         // Create the display card.
         const card = document.createElement("div");
         card.className = "card";
@@ -115,13 +111,13 @@ function fillLibrary(myLibrary) {
         pages.textContent = "Pages: " + myLibrary[i].pages;
         publish_date.textContent = "Publish date: " + myLibrary[i].publish_date;
 
-        // Append new elements to the card.
+        // Append new elements to card_content div.
         card.append(title, author, pages, publish_date);
         library_contents.appendChild(card);
-
-        // Update library stats.
-        statUpdate();
     }
+    
+    // Update library stats.
+    statUpdate();
 }
 
 
@@ -136,7 +132,9 @@ function statUpdate() {
 const harryPotter2 = new book("Harry Potter and the Chamber of Secrets", "J.K Rowling", 295, "01-25-1999", 0);
 const theHobbit = new book("The Hobbit", "J.R.R Tolkien", 295, "09-21-1937", 1);
 const algorithmsForth = new book("Algorithms, Forth Ed", "Sedgewick", 610, "10-10-2011", 2);
+const calcProblems = new book("Calculus, Forth Ed", "Lang", 950, "10-10-2011", 2);
 addBookToLibrary(harryPotter2);
 addBookToLibrary(theHobbit);
 addBookToLibrary(algorithmsForth);
+addBookToLibrary(calcProblems);
 fillLibrary(myLibrary);
