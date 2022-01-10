@@ -23,6 +23,7 @@ function book(title, author, pages, publish_date, index) {
     this.pages = pages;
     this.publish_date = publish_date;
     this.index = index;
+    this.read = true;
 }
 
 book.prototype.info = function() {
@@ -66,7 +67,7 @@ delete_book_btn.addEventListener("click", () => {
             }
         })
     } 
-});
+})
 
 
 // Add new book to library with form submit button.
@@ -79,7 +80,7 @@ new_book_container.addEventListener("submit", (event) => {
     new_book_container.reset();
     new_book_form.style.display = "none";
     fillLibrary(myLibrary);
-});
+})
 
 
 // Add book object to myLibrary array.
@@ -104,8 +105,22 @@ function fillLibrary(myLibrary) {
         const publish_date = document.createElement("p");
         card.id = i;
 
-        // Create "hidden-information" -> Read / not read, book rating, book notes. Accessed by clicking on the card.
-        const book_notes = document.createElement("textarea");
+        // Create "read" checkbox and count number of read books.
+        const read_check_div = document.createElement("div");
+        const read_check_input = document.createElement("input");
+        read_check_div.className = "read-book-checkbox";
+        read_check_div.textContent = "Read: "
+        read_check_input.type = "checkbox";
+        read_check_input.checked = myLibrary[i].read;
+        
+        read_check_input.addEventListener("click", () => {
+            if (!read_check_input.checked) {
+                card.classList.add("unread-card");
+            } else {
+                card.classList.remove("unread-card");
+            }
+        })
+        read_check_div.append(read_check_input);
 
         // Add Text Content to each text element.
         title.textContent = "Title: " + myLibrary[i].title;
@@ -115,8 +130,8 @@ function fillLibrary(myLibrary) {
 
         // Append new elements to card_content div.
         card.append(title, author, pages, publish_date);
+        card.append(read_check_div);
         library_contents.appendChild(card);
-
     }
 
     // Update library stats.
@@ -127,7 +142,7 @@ function fillLibrary(myLibrary) {
 // Update stats on upper right page.
 function statUpdate() {
     total_books.textContent = `Books in Library: ${myLibrary.length}`;
-    total_read.textContent = `Books read: 0`;
+    total_read.textContent = `Books read: ${readBooksCount}`;
 }
 
 

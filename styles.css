@@ -9,7 +9,7 @@ body {
     gap: 25px;
 }
 
-/* UPPER DISPLAY STYLING */
+/* -------------------------------------  UPPER DISPLAY STYLING -------------------------------------  */
 .upper_display {
     display: flex;
     justify-content: space-between;
@@ -25,7 +25,7 @@ body {
     gap: 0px;
 }
 
-/* BUTTON MENU STYLING */
+/* -------------------------------------  BUTTON MENU STYLING  ------------------------------------- */
 .button_menu {
     display: flex;
     justify-content: space-between;
@@ -83,7 +83,7 @@ body {
     background-color: darkred;
 }
 
-/* ADD BOOK POP-UP FORM STYLING */
+/* -------------------------------------  ADD BOOK POP-UP FORM STYLING  -------------------------------------  */
 .form-popup {
     display: none;
     position: fixed;
@@ -106,6 +106,7 @@ body {
       padding: 25px;
       gap: 25px;
   }
+
   label {
       display: block;
       margin-top: 10px;
@@ -141,7 +142,7 @@ body {
     background-color: darkred;
 }
 
-/* LIBRARY CONTENTS STYLING */
+/* -------------------------------------   LIBRARY CONTENTS STYLING  ------------------------------------- */
 .library_contents {
     display: flex;
     flex-wrap: wrap;
@@ -162,9 +163,22 @@ body {
     font-size: 16px;
 }
 
+.unread-card {
+    background-color: #89CFF0;
+}
+
 .card:hover {
     transition: ease-in-out;
     transform: scale(1.1);
+}
+
+/* Read checkbox styling */
+.read-book-checkbox {
+    display: none;
+}
+
+.card:hover .read-book-checkbox {
+    display: block;
 }
 
 

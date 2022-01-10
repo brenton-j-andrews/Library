@@ -46,6 +46,7 @@ Desired program behavior:
 5. (The issue) Should be able to repeat step 4 until the library is empty / you are done.
 6. Click "Click when done" to exit delete mode.
 
+ANOTHER DELETE BUTTON ISSUE: The delete button requires you to delete a card, if you press the button again it will not revert to normal mode!
 
 
 Next goal: Create a "Read" (Yes / No) toggle button that changes the color of the book card if the book has been read. This button will be hidden in an extended card
