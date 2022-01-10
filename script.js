@@ -1,8 +1,13 @@
-let total_books = document.getElementById("test");
-let total_read = document.getElementById("total_read");
+let total_books = document.getElementById("total-books");
 let add_book_btn = document.getElementById("add_btn");
 let delete_book_btn = document.getElementById("delete_btn");
 let new_book_form = document.getElementById("newBook");
+
+// Oraganize library buttons.
+let organize_by = document.getElementById("organize_by");
+let order_by = document.getElementById("order_by");
+
+// New book form buttons.
 let new_book_container = document.getElementById("form-container")
 let submit_form_btn = document.getElementById("submit-form");
 let clear_form_btn = document.getElementById("clear-form")
@@ -14,6 +19,7 @@ let library_contents = document.getElementById("library_contents");
 let cards = library_contents.childNodes;
 let myLibrary = [];
 let delete_mode = false;
+console.log(order_by.value);
 
 
 // Book object constructor and prototype functions.
@@ -92,6 +98,7 @@ function addBookToLibrary(bookObject) {
 // Use myLibrary info to fill webpage with library content cards.
 function fillLibrary(myLibrary) {
     library_contents.innerHTML = "";
+    readBooksCount = 0;
     for(let i = 0; i < myLibrary.length; i++) {
 
         // Create the display card.
@@ -112,7 +119,7 @@ function fillLibrary(myLibrary) {
         read_check_div.textContent = "Read: "
         read_check_input.type = "checkbox";
         read_check_input.checked = myLibrary[i].read;
-        
+
         read_check_input.addEventListener("click", () => {
             if (!read_check_input.checked) {
                 card.classList.add("unread-card");
@@ -142,7 +149,6 @@ function fillLibrary(myLibrary) {
 // Update stats on upper right page.
 function statUpdate() {
     total_books.textContent = `Books in Library: ${myLibrary.length}`;
-    total_read.textContent = `Books read: ${readBooksCount}`;
 }
 
 

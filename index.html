@@ -15,24 +15,26 @@
 
                 <!--  Stats info on upper right screen -->
                 <div class="stats">
-                    <p id="test"> </p>
-                    <p id="total_read"> </p>
+                    <p id="total-books"> </p>
                 </div>
             </div>
 
             <!-- Menu / buttons information -->
             <div class="button_menu">
-                <!-- Drop down organization menu -->
+                <!-- Drop down organization menu - org options -->
                 <div class="dropdown-btn">
-                    <label for="order_by"> Organize Library By: </label>
-                    <select name="order_by" id="order_by">
-                        <option value="date_added"> Date Added </option>
-                        <option value="publish_date"> Date Published </option>
-                        <option value="shortest"> Shortest Length </option>
-                        <option value="shortest"> Longest Length </option>
-                        <option value="alphabetic_title"> By Title </option>
-                    </select>
-
+                    <div class="organize_by">
+                        <label for="organize_by"> Organize Library By: </label>
+                            <select name="organize_by" id="organize_by">
+                                <option value="page_count"> Page Count </option>
+                            </select>
+                    </div>
+                    <div class="order_by">
+                        <select name="order_by" id="order_by">
+                            <option value="ascending"> Ascending </option>
+                            <option value="descending"> Descending </option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="read_unread">
